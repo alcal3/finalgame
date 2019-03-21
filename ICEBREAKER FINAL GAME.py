@@ -21,7 +21,7 @@ def blacksmith():
         print("Press Y to help the Blacksmith.")
         if input() == 'Y':
             print(npcName,":] Thanks. There's a shovel over there. Start shoveling some coal to keep the fire going")
-        #shovel coal for blacksmith
+        #shovel coal for blacksmith. same as grandma
             shovelAction = 0
             shovel = input("The Blacksmith points to a shovel sticking out of a pile of coal. Type SHOVEL to begin. ")
             if shovel == 'SHOVEL':
@@ -151,6 +151,7 @@ else:
       
 print("The thought strikes you in your core, a scowl on your face as you grip the broom tighter. Your anger bubbles in your mind, every sweep against the old wood getting louder and louder in your mind. King Iceberg’s condescending laugh echoes, and all you want to do is burn his whole kingdom down.")
 print("Until suddenly the bristles on your broom burst into flames!")
+#puts fire out 
 choice6 = input("Put out the fire! Type extinguish to put out.")
 while choice6 != "EXTINGUISH":
     if choice6 == "EXTINGUISH":
@@ -196,7 +197,7 @@ def fightWolves():
         #COUNTERS keep track of hit points. which ever counter reaches first determines outcome.
         while fireballCounter != 3 and weaponCounter != 5 and hitCounter != 10:
             attackChoice = input("What do you want to hit them with? (WEAPON or FIRE).")
-#fire attack
+#fireball attack
             if attackChoice == 'FIRE':
 #                for fireballAttack in range(10):
                 fireballAttack = random.randrange(1, 10)
@@ -227,16 +228,18 @@ def fightWolves():
                 if weaponCounter == 5:
                     print("The wolves are dead! You discover new power of FIREBALL.")
                     break
-                    
+  #if hitCounter hits 10 the player dies and is prompted to restart module to try again                  
         if hitCounter == 10:
             perish = input("You perished. Would you like to try again? Yes or No.")
             if perish == 'YES':
                 fightWolves()
             else:
                 raise SystemExit
+                #health potions is prompted if the player gets hit 8 or more times
         if hitCounter >= 8: 
             print("Your HP is currently ",hitCounter," . Would you like to use one of your health potions? YES or NO.")
             if input() == 'YES':
+                #resets their hitcounter to 0
                 hitCounter = 0
                 print("You are now full HP.")
             else:
@@ -266,7 +269,7 @@ import random
 print("You continue our your way, your plan slowly beginning to come together. The fireballs you produced from your hands could be useful when you ambush the castle. You create one small flame in the palm of your hand to keep yourself warm as you continue forward.")
 print("You arrive to an old rickety bridge that’s held together with old planks of wood and some rope. A deep sigh escapes your lips as you approach. Peering over the edge, you see nothing but fog that hides what ever has fallen down there before.")
 cross = input("Do you want to cross? YES or NO.")
-
+#bridgemonster fight
 def bridgeMonster():
     
     global fireballCounter
@@ -279,6 +282,7 @@ def bridgeMonster():
     hitCounter = 0
     if monsterAttack == "ATTACK":
         while firebreathCounter != 2 and fireballCounter != 4 and weaponCounter != 8 and hitCounter != 11:
+            #fireball same as other modules
             attackChoice = input("What do you want to hit them with? Choose: FIREBALL, FIREBREATH, or WEAPON.")
             if attackChoice == 'FIREBALL':
         #        for fireballAttack in range(10):
@@ -290,7 +294,7 @@ def bridgeMonster():
                     print("You missed! The monster's tentacle hits hard on your left side. You take 5 damage.")
                     hitCounter += 2
       #              break
-          #new ability FIREBREATH          
+          #new ability FIREBREATH hits hard but is harder to hit. if you do not hit it you risk a chance of being thrown off a bridge.         
             elif attackChoice == 'FIREBREATH':
      #           for firebreathAttack in range(10):
                 firebreathAttack = random.randrange(1,10)
@@ -298,6 +302,7 @@ def bridgeMonster():
                     print("You feel a deep rumble in your throat and open your mouth as a stream of fire rushes out and spreads across the tentacles of the monster! You hit for 10 damage!")
                     firebreathCounter += 1
                 else:
+                    #bridgefall module
                     bridgeFall = int(input("You missed! The monster hits you from behind and grabs your leg. It tugs you towards the edge of the rope. Save yourself! Pick a number 1 to 6."))
       #              for bridgeFall in range(10):
       #                  bridgeFall = random.randrange(1,10)
@@ -309,6 +314,7 @@ def bridgeMonster():
                         hitCounter += 11
            #             break
             else:
+                #weapon attack easy to hit but takes more tries to complete
          #       while fireballCounter != 3 or weaponCounter != 5 or hitCounter != 11:
                 if attackChoice == 'WEAPON':
          #           for weaponAttack in range(10):
@@ -320,13 +326,14 @@ def bridgeMonster():
                         print("You missed! The tentacle strikes and hits you for 5 damage!")
                         hitCounter += 2
           #              break
-                                    
+            #death part                        
             if hitCounter == 11:
                 perish = input("You perished. Would you like to try again? Yes or No.")
                 if perish == 'YES':
                     bridgeMonster()
                 else:
                     raise SystemExit
+                    #health potions
             if hitCounter >= 8: 
                 print("Your HP is currently ",hitCounter," . Would you like to use one of your health potions? Yes or No.")
                 if input() == 'YES':
@@ -513,8 +520,9 @@ def kingFight():
                     print("You feel a deep rumble in your throat and open your mouth as a stream of fire rushes out and spreads across throne room! You hit the King for 10 damage!")
                     firebreathCounter += 1
                 else:
+                    #similar to bridgemonster. instead of dying you take 8 to your hitCounter
                     freezeYou = int(input("You missed! The king tries to freeze you into a block of ice! Save yourself! Pick a number 1 to 6."))
-                    if freezeYou >= 3:
+                    if freezeYou >= 4:
                         print("You let out a burst of fire around you and melt the ice!")
                     else:
                         print("King Iceberg freezes you into a block of ice and paralyzes you. He breaks the ice and it shatters into your skin. You take 10 damage.")
@@ -548,7 +556,7 @@ def kingFight():
 print("Once you get inside, the cold air seems even more intense. Your anger rises as you get closer and closer to the throne room. You get up to the double doors and push them with all your might.")
 print("Your dramatic entrance catches the king’s attention immediately. He doesn’t seem to recognize you. “What’s your business here?” he demands as he matches your glare as you approach.")
 asknicely = input("What do you do? Type ask or demand.")
-#if user types as
+#if user types ask they get prompted but ultimately fight
 if asknicely == 'ASK' or 'DEMAND':
     print("The king signature laugh echos throughout the thrown room. He looks over to  your terrified sister who is physically trembling out of fear. He wraps his arm around her shoulders and smirks knowingly.'She's mine now. Now get out of my sight.' he snaps at you.")
     kingAttack = input("What do you do? FIGHT or LEAVE.")
