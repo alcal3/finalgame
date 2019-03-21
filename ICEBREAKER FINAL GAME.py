@@ -443,21 +443,23 @@ def meltLOCK():
     global meltFail
     meltFail = 0
     if lock == 'MELT':
-        while meltLock != 2 or meltFail !=2:
+        while meltLock != 2 and meltFail !=2:
             #program asks for number. if number is 3 then they melt it. if the number is different thenthey don't melt it
             meltingLock = int(input("Pick a number 1 to 5."))
             if meltingLock == 3:
-                print("You notice that the first layer of frost disappears. A clear glossy ice remains on the lock. Keep going.")
+                print("You can feel water spilling into your hands as the ice around the lock melts.")
                 meltLock += 1
-                meltingLock = int(input("Pick a number 1 to 5."))
+                #print (meltLock)
+               # meltingLock = int(input("Pick a number 1 to 5."))
 #if user wins two times then they can pass through without guard fight
                 if meltLock == 2:
+                  #  print(meltLock)
                     print("You melted the lock and it clicks open. You tug it out of the chains and they fall to the cold floor. The door creaks open and you head inside.")
-                    break
             else:
                 print("The lock does not change. Try again!")
+               # print(meltLock)
                 meltFail += 1
-                meltingLock = int(input("Pick a number 1 to 5."))
+               # meltingLock = int(input("Pick a number 1 to 5."))
 #if user fails 2 times then they get into a fight with three ice guards.
                 if meltFail == 2:
                     knightFight()
@@ -474,6 +476,7 @@ else:
 #here the user would have to pick random numbers. these would determine if they melt the padlock
   #if they don't, then they fight three ice guards.
   #if they do, they can go straight to the castle.
+
 #END OF CHAPTER 4
 
 #aleks calderon
